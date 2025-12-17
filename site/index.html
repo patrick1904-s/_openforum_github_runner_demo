@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>GitHub Runners Demo</title>
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      max-width: 700px;
+      margin: 40px auto;
+      padding: 20px;
+    }
+    h1 {
+      color: #24292f;
+    }
+    code {
+      background: #f6f8fa;
+      padding: 4px 6px;
+      border-radius: 4px;
+    }
+    ul {
+      line-height: 1.8;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>GitHub Actions & Runners Demo 🚀</h1>
+
+  <p>
+    This website is automatically updated using
+    <strong>GitHub Actions</strong> and <strong>GitHub Runners</strong>.
+  </p>
+
+  <h2>📌 How to Contribute</h2>
+  <ol>
+    <li>Fork this repository</li>
+    <li>Add your name to <code>site/names.txt</code></li>
+    <li>Your name must be in <strong>ALL CAPITAL LETTERS</strong></li>
+    <li>Open a Pull Request</li>
+  </ol>
+
+  <p>
+    ❌ Lowercase letters → PR fails  
+    <br />
+    ✅ Uppercase letters → PR auto-merges
+  </p>
+
+  <h2>✅ Accepted Names</h2>
+  <ul id="names-list">
+    <li>Loading names...</li>
+  </ul>
+
+  <script>
+    fetch("names.txt")
+      .then(response => response.text())
+      .then(data => {
+        const list = document.getElementById("names-list");
+        list.innerHTML = "";
+        data.split("\n").forEach(name => {
+          if (name.trim() !== "") {
+            const li = document.createElement("li");
+            li.textContent = name;
+            list.appendChild(li);
+          }
+        });
+      })
+      .catch(() => {
+        document.getElementById("names-list").innerHTML =
+          "<li>Failed to load names</li>";
+      });
+  </script>
+
+</body>
+</html>
+
