@@ -1,0 +1,20 @@
+name: Name Capital Validation
+
+on:
+  workflow_dispatch:
+    inputs:
+      name:
+        description: "Enter your name in ALL CAPS"
+        required: true
+
+jobs:
+  validate-name:
+    runs-on: ubuntu-latest # GitHub-hosted runner
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Run CAPS validation
+        run: |
+          ./check_caps.sh "${{ github.event.inputs.name }}"

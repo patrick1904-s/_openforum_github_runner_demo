@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>CAPS CHECK DEMO</title>
+</head>
+<body>
+  <h2>Enter Your Name</h2>
+
+  <input type="text" id="name" placeholder="YOUR NAME" />
+  <button onclick="check()">Check</button>
+
+  <p id="result"></p>
+
+  <script>
+    function check() {
+      const name = document.getElementById("name").value;
+      if (name === name.toUpperCase()) {
+        document.getElementById("result").innerText = "PASS: All CAPS ✅";
+      } else {
+        document.getElementById("result").innerText = "FAIL: Not All CAPS ❌";
+      }
+    }
+  </script>
+</body>
+</html>
+
